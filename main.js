@@ -10,9 +10,13 @@ let item = document.getElementById("item").value
 let li =document.createElement("li")
 li.appendChild(document.createTextNode(item))
 let btn = document.createElement("button")
-btn.appendChild(document.createTextNode("X"))
+let upbtn = document.createElement("button")
+
+// btn.appendChild(document.createTextNode("X"))
 li.appendChild(btn)
-btn.className="btn btn-danger btn-sm float-right delete"
+li.appendChild(upbtn)
+btn.className="btn btn-danger btn-sm float-right delete glyphicon glyphicon-remove"
+upbtn.className="btn btn-primary btn-sm float-right update glyphicon glyphicon-pencil"
 li.className="list-group-item"
 itemlist.appendChild(li)
 document.getElementById('item').value=" "
@@ -25,11 +29,18 @@ if(confirm("are you sure ,want to delete task")){
  // console.log( e.target.parentElement)
   itemlist.removeChild(e.target.parentElement)  
 }
-   }else{
-    alert("Task!!")
    }
 })
-
+itemlist.addEventListener("click",function(e){
+    let item =document.getElementById("item").value
+    if(e.target.classList.contains("update")){
+ 
+ if(confirm("are you sure ,want to update task")){
+// console.log(item)
+   e.target.parentElement.firstChild.textContent=item  
+ }
+    }
+ })
 filter.addEventListener("keypress",function(e){
 let value = e.target.value.toLowerCase()
 let li =document.getElementsByTagName("li")
@@ -41,5 +52,6 @@ item.style.display ="block"
         item.style.display ="none"
     }
 })
+
 
 })
