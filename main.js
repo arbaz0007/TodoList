@@ -26,7 +26,7 @@ itemlist.addEventListener("click",function(e){
    if(e.target.classList.contains("delete")){
 
 if(confirm("are you sure ,want to delete task")){
- // console.log( e.target.parentElement)
+ console.log( e.target.parentElement)
   itemlist.removeChild(e.target.parentElement)  
 }
    }
